@@ -288,7 +288,8 @@ function useInstance(instance) {
 
       // Group the rows together for this level
       let rowGroupsMap = groupByFn(rows, columnId)
-
+      console.log('rowGroupsMap...........................')
+      console.log(rowGroupsMap)
       // Peform aggregations for each group
       const aggregatedGroupedRows = Object.entries(rowGroupsMap).map(
         ([groupByVal, groupedRows], index) => {
@@ -351,14 +352,7 @@ function useInstance(instance) {
     })
     console.log('[groupedRows]..........................')
     console.log(groupedRows)
-    console.log('[groupedFlatRows]..........................')
-    console.log(groupedFlatRows)
-    console.log('[groupedRowsById]..........................')
-    console.log(groupedRowsById)
-    console.log('[nonGroupedFlatRows]..........................')
-    console.log(nonGroupedFlatRows)
-    console.log('[nonGroupedRowsById]..........................')
-    console.log(nonGroupedRowsById)
+   
     // Assign the new data
     return [
       groupedRows,
