@@ -349,7 +349,16 @@ function useInstance(instance) {
         nonGroupedRowsById[subRow.id] = subRow
       }
     })
-
+    console.log('[groupedRows]..........................')
+    console.log(groupedRows)
+    console.log('[groupedFlatRows]..........................')
+    console.log(groupedFlatRows)
+    console.log('[groupedRowsById]..........................')
+    console.log(groupedRowsById)
+    console.log('[nonGroupedFlatRows]..........................')
+    console.log(nonGroupedFlatRows)
+    console.log('[nonGroupedRowsById]..........................')
+    console.log(nonGroupedRowsById)
     // Assign the new data
     return [
       groupedRows,
