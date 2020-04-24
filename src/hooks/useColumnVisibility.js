@@ -74,20 +74,34 @@ function reducer(state, action, previousState, instance) {
   }
 
   if (action.type === actions.toggleHideColumn) {
-    console.log('toggle hidden column')
+    // console.log('toggle hidden column')
+    // console.log(action)
+    // console.log('state......')
+    // console.log(state)
+    // const should =
+    //   typeof action.value !== 'undefined'
+    //     ? action.value
+    //     : !state.hiddenColumns.includes(action.columnId)
+    // console.log('should.......')
+    // console.log(should)
+    // const hiddenColumns = should
+    //   ? [...state.hiddenColumns, action.columnId]
+    //   : state.hiddenColumns.filter(d => d !== action.columnId)
+    // console.log('hiddenColumns.......')
+    // console.log(hiddenColumns)
+    // const result = {
+    //   ...state,
+    //   hiddenColumns,
+    // }
+    // console.log('result......')
+    // console.log(result)
+    // return result
+    console.log('set hidden column')
     console.log(action)
     console.log('state......')
     console.log(state)
-    const should =
-      typeof action.value !== 'undefined'
-        ? action.value
-        : !state.hiddenColumns.includes(action.columnId)
-    console.log('should.......')
-    console.log(should)
-    const hiddenColumns = should
-      ? [...state.hiddenColumns, action.columnId]
-      : state.hiddenColumns.filter(d => d !== action.columnId)
-    console.log('hiddenColumns.......')
+    const hiddenColumns = [...action.columnId]
+    console.log('hidden column .....')
     console.log(hiddenColumns)
     const result = {
       ...state,
@@ -103,7 +117,7 @@ function reducer(state, action, previousState, instance) {
     console.log(action)
     console.log('state......')
     console.log(state)
-    const hiddenColumns = [... functionalUpdate(action.value, state.hiddenColumns)]
+    const hiddenColumns = [...functionalUpdate(action.value, state.hiddenColumns)]
     console.log('hidden column .....')
     console.log(hiddenColumns)
     const result = {

@@ -780,17 +780,34 @@
     }
 
     if (action.type === actions.toggleHideColumn) {
-      console.log('toggle hidden column');
+      // console.log('toggle hidden column')
+      // console.log(action)
+      // console.log('state......')
+      // console.log(state)
+      // const should =
+      //   typeof action.value !== 'undefined'
+      //     ? action.value
+      //     : !state.hiddenColumns.includes(action.columnId)
+      // console.log('should.......')
+      // console.log(should)
+      // const hiddenColumns = should
+      //   ? [...state.hiddenColumns, action.columnId]
+      //   : state.hiddenColumns.filter(d => d !== action.columnId)
+      // console.log('hiddenColumns.......')
+      // console.log(hiddenColumns)
+      // const result = {
+      //   ...state,
+      //   hiddenColumns,
+      // }
+      // console.log('result......')
+      // console.log(result)
+      // return result
+      console.log('set hidden column');
       console.log(action);
       console.log('state......');
       console.log(state);
-      var should = typeof action.value !== 'undefined' ? action.value : !state.hiddenColumns.includes(action.columnId);
-      console.log('should.......');
-      console.log(should);
-      var hiddenColumns = should ? [].concat(state.hiddenColumns, [action.columnId]) : state.hiddenColumns.filter(function (d) {
-        return d !== action.columnId;
-      });
-      console.log('hiddenColumns.......');
+      var hiddenColumns = [].concat(action.columnId);
+      console.log('hidden column .....');
       console.log(hiddenColumns);
 
       var result = _extends({}, state, {
