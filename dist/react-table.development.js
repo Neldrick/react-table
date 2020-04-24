@@ -2376,9 +2376,13 @@
 
         var columnId = existingGroupBy[depth]; // Group the rows together for this level
 
-        var rowGroupsMap = groupByFn(rows, columnId);
-        console.log('rowGroupsMap...........................');
-        console.log(rowGroupsMap); // Peform aggregations for each group
+        var currentColumn = allColumns.find(function (col) {
+          return col.id === columnId;
+        });
+        console.log('currentColumn...........................');
+        console.log(currentColumn);
+        var customGroupByFn = typeof currentColumn.groupBy === 'function' ? currentColumn.groupBy : groupByFn;
+        var rowGroupsMap = customGroupByFn(rows, columnId); // Peform aggregations for each group
 
         var aggregatedGroupedRows = Object.entries(rowGroupsMap).map(function (_ref4, index) {
           var groupByVal = _ref4[0],
@@ -2430,9 +2434,7 @@
           nonGroupedFlatRows.push(subRow);
           nonGroupedRowsById[subRow.id] = subRow;
         }
-      });
-      console.log('[groupedRows]..........................');
-      console.log(groupedRows); // Assign the new data
+      }); // Assign the new data
 
       return [groupedRows, groupedFlatRows, groupedRowsById, onlyGroupedFlatRows, onlyGroupedRowsById, nonGroupedFlatRows, nonGroupedRowsById];
     }, [manualGroupBy, groupBy, rows, flatRows, rowsById, allColumns, userAggregations, groupByFn]),

@@ -287,9 +287,13 @@ function useInstance(instance) {
       const columnId = existingGroupBy[depth]
 
       // Group the rows together for this level
-      let rowGroupsMap = groupByFn(rows, columnId)
-      console.log('rowGroupsMap...........................')
-      console.log(rowGroupsMap)
+      const currentColumn = allColumns.find(col => col.id === columnId)
+      console.log('currentColumn...........................')
+      console.log(currentColumn)
+      const customGroupByFn = typeof currentColumn.groupBy === 'function'
+        ? currentColumn.groupBy : groupByFn
+      let rowGroupsMap = customGroupByFn(rows, columnId)
+      
       // Peform aggregations for each group
       const aggregatedGroupedRows = Object.entries(rowGroupsMap).map(
         ([groupByVal, groupedRows], index) => {
@@ -350,8 +354,6 @@ function useInstance(instance) {
         nonGroupedRowsById[subRow.id] = subRow
       }
     })
-    console.log('[groupedRows]..........................')
-    console.log(groupedRows)
    
     // Assign the new data
     return [
