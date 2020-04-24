@@ -794,7 +794,7 @@
       console.log(action);
       console.log(state.hiddenColumns);
       return _extends({}, state, {
-        hiddenColumns: functionalUpdate(action.value, state.hiddenColumns)
+        hiddenColumns: action.value
       });
     }
 

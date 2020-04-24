@@ -95,7 +95,7 @@ function reducer(state, action, previousState, instance) {
     console.log(state.hiddenColumns)
     return {
       ...state,
-      hiddenColumns: functionalUpdate(action.value, state.hiddenColumns),
+      hiddenColumns: action.value,
     }
   }
 
