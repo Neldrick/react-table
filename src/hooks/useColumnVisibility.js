@@ -90,6 +90,9 @@ function reducer(state, action, previousState, instance) {
   }
 
   if (action.type === actions.setHiddenColumns) {
+    console.log('set hidden column')
+    console.log(action)
+    console.log(state.hiddenColumns)
     return {
       ...state,
       hiddenColumns: functionalUpdate(action.value, state.hiddenColumns),

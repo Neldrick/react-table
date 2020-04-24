@@ -286,10 +286,8 @@ function useInstance(instance) {
 
       const columnId = existingGroupBy[depth]
 
-      // Group the rows together for this level
+      // Group the rows together for this level wih custom column function
       const currentColumn = allColumns.find(col => col.id === columnId)
-      console.log('currentColumn...........................')
-      console.log(currentColumn)
       const customGroupByFn = typeof currentColumn.groupBy === 'function'
         ? currentColumn.groupBy : groupByFn
       let rowGroupsMap = customGroupByFn(rows, columnId)

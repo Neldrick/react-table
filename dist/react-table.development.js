@@ -790,6 +790,9 @@
     }
 
     if (action.type === actions.setHiddenColumns) {
+      console.log('set hidden column');
+      console.log(action);
+      console.log(state.hiddenColumns);
       return _extends({}, state, {
         hiddenColumns: functionalUpdate(action.value, state.hiddenColumns)
       });
@@ -2374,13 +2377,11 @@
           return rows;
         }
 
-        var columnId = existingGroupBy[depth]; // Group the rows together for this level
+        var columnId = existingGroupBy[depth]; // Group the rows together for this level wih custom column function
 
         var currentColumn = allColumns.find(function (col) {
           return col.id === columnId;
         });
-        console.log('currentColumn...........................');
-        console.log(currentColumn);
         var customGroupByFn = typeof currentColumn.groupBy === 'function' ? currentColumn.groupBy : groupByFn;
         var rowGroupsMap = customGroupByFn(rows, columnId); // Peform aggregations for each group
 
