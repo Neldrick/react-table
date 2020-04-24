@@ -112,7 +112,8 @@ export const useTable = (props, ...plugins) => {
         console.info({ action })
         throw new Error('Unknown Action 👆')
       }
-
+      console.log('reducer..........')
+      console.log(getHooks().stateReducers)
       // Reduce the state from all plugin reducers
       return [
         ...getHooks().stateReducers,

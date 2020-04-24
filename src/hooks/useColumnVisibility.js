@@ -117,7 +117,7 @@ function reducer(state, action, previousState, instance) {
     console.log(action)
     console.log('state......')
     console.log(state)
-    const hiddenColumns = [...functionalUpdate(action.value, state.hiddenColumns)]
+    const hiddenColumns = [...action.value]
     console.log('hidden column .....')
     console.log(hiddenColumns)
     const result = {
@@ -130,6 +130,10 @@ function reducer(state, action, previousState, instance) {
   }
 
   if (action.type === actions.toggleHideAllColumns) {
+    console.log('toggle all column')
+    console.log(action)
+    console.log('state......')
+    console.log(state)
     const shouldAll =
       typeof action.value !== 'undefined'
         ? action.value
