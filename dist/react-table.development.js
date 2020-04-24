@@ -792,9 +792,14 @@
       });
       console.log('hiddenColumns.......');
       console.log(hiddenColumns);
-      return _extends({}, state, {
+
+      var result = _extends({}, state, {
         hiddenColumns: hiddenColumns
       });
+
+      console.log('result......');
+      console.log(result);
+      return result;
     }
 
     if (action.type === actions.setHiddenColumns) {
@@ -807,9 +812,14 @@
 
       console.log('hidden column .....');
       console.log(_hiddenColumns);
-      return _extends({}, state, {
+
+      var _result = _extends({}, state, {
         hiddenColumns: _hiddenColumns
       });
+
+      console.log('result......');
+      console.log(_result);
+      return _result;
     }
 
     if (action.type === actions.toggleHideAllColumns) {

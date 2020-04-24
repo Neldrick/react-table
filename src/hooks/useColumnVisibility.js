@@ -89,10 +89,13 @@ function reducer(state, action, previousState, instance) {
       : state.hiddenColumns.filter(d => d !== action.columnId)
     console.log('hiddenColumns.......')
     console.log(hiddenColumns)
-    return {
+    const result = {
       ...state,
       hiddenColumns,
     }
+    console.log('result......')
+    console.log(result)
+    return result
   }
 
   if (action.type === actions.setHiddenColumns) {
@@ -103,10 +106,13 @@ function reducer(state, action, previousState, instance) {
     const hiddenColumns = [... functionalUpdate(action.value, state.hiddenColumns)]
     console.log('hidden column .....')
     console.log(hiddenColumns)
-    return {
+    const result = {
       ...state,
       hiddenColumns,
     }
+    console.log('result......')
+    console.log(result)
+    return result
   }
 
   if (action.type === actions.toggleHideAllColumns) {
