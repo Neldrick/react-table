@@ -780,10 +780,18 @@
     }
 
     if (action.type === actions.toggleHideColumn) {
+      console.log('toggle hidden column');
+      console.log(action);
+      console.log('state......');
+      console.log(state);
       var should = typeof action.value !== 'undefined' ? action.value : !state.hiddenColumns.includes(action.columnId);
+      console.log('should.......');
+      console.log(should);
       var hiddenColumns = should ? [].concat(state.hiddenColumns, [action.columnId]) : state.hiddenColumns.filter(function (d) {
         return d !== action.columnId;
       });
+      console.log('hiddenColumns.......');
+      console.log(hiddenColumns);
       return _extends({}, state, {
         hiddenColumns: hiddenColumns
       });
@@ -792,9 +800,15 @@
     if (action.type === actions.setHiddenColumns) {
       console.log('set hidden column');
       console.log(action);
-      console.log(state.hiddenColumns);
+      console.log('state......');
+      console.log(state);
+
+      var _hiddenColumns = [].concat(functionalUpdate(action.value, state.hiddenColumns));
+
+      console.log('hidden column .....');
+      console.log(_hiddenColumns);
       return _extends({}, state, {
-        hiddenColumns: action.value
+        hiddenColumns: _hiddenColumns
       });
     }
 
