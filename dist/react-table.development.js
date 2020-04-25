@@ -991,10 +991,8 @@
           action: action
         });
         throw new Error('Unknown Action 👆');
-      }
+      } // Reduce the state from all plugin reducers
 
-      console.log('reducer..........');
-      console.log(getHooks().stateReducers); // Reduce the state from all plugin reducers
 
       return [].concat(getHooks().stateReducers, Array.isArray(getStateReducer()) ? getStateReducer() : [getStateReducer()]).reduce(function (s, handler) {
         return handler(s, action, state, getInstance()) || s;
