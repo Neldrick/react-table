@@ -286,7 +286,7 @@ function useInstance(instance) {
 
       const columnId = existingGroupBy[depth]
 
-      // Group the rows together for this level wih custom column function
+      // Group the rows together for this level
       const currentColumn = allColumns.find(col => col.id === columnId)
       const customGroupByFn = typeof currentColumn.groupBy === 'function'
         ? currentColumn.groupBy : groupByFn

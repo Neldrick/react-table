@@ -780,70 +780,22 @@
     }
 
     if (action.type === actions.toggleHideColumn) {
-      // console.log('toggle hidden column')
-      // console.log(action)
-      // console.log('state......')
-      // console.log(state)
-      // const should =
-      //   typeof action.value !== 'undefined'
-      //     ? action.value
-      //     : !state.hiddenColumns.includes(action.columnId)
-      // console.log('should.......')
-      // console.log(should)
-      // const hiddenColumns = should
-      //   ? [...state.hiddenColumns, action.columnId]
-      //   : state.hiddenColumns.filter(d => d !== action.columnId)
-      // console.log('hiddenColumns.......')
-      // console.log(hiddenColumns)
-      // const result = {
-      //   ...state,
-      //   hiddenColumns,
-      // }
-      // console.log('result......')
-      // console.log(result)
-      // return result
-      console.log('set hidden column');
-      console.log(action);
-      console.log('state......');
-      console.log(state);
-      var hiddenColumns = [].concat(action.columnId);
-      console.log('hidden column .....');
-      console.log(hiddenColumns);
-
-      var result = _extends({}, state, {
+      var should = typeof action.value !== 'undefined' ? action.value : !state.hiddenColumns.includes(action.columnId);
+      var hiddenColumns = should ? [].concat(state.hiddenColumns, [action.columnId]) : state.hiddenColumns.filter(function (d) {
+        return d !== action.columnId;
+      });
+      return _extends({}, state, {
         hiddenColumns: hiddenColumns
       });
-
-      console.log('result......');
-      console.log(result);
-      return result;
     }
 
     if (action.type === actions.setHiddenColumns) {
-      console.log('set hidden column');
-      console.log(action);
-      console.log('state......');
-      console.log(state);
-
-      var _hiddenColumns = [].concat(action.value);
-
-      console.log('hidden column .....');
-      console.log(_hiddenColumns);
-
-      var _result = _extends({}, state, {
-        hiddenColumns: _hiddenColumns
+      return _extends({}, state, {
+        hiddenColumns: functionalUpdate(action.value, state.hiddenColumns)
       });
-
-      console.log('result......');
-      console.log(_result);
-      return _result;
     }
 
     if (action.type === actions.toggleHideAllColumns) {
-      console.log('toggle all column');
-      console.log(action);
-      console.log('state......');
-      console.log(state);
       var shouldAll = typeof action.value !== 'undefined' ? action.value : !state.hiddenColumns.length;
       return _extends({}, state, {
         hiddenColumns: shouldAll ? instance.allColumns.map(function (d) {
@@ -2424,7 +2376,7 @@
           return rows;
         }
 
-        var columnId = existingGroupBy[depth]; // Group the rows together for this level wih custom column function
+        var columnId = existingGroupBy[depth]; // Group the rows together for this level
 
         var currentColumn = allColumns.find(function (col) {
           return col.id === columnId;
